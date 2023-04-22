@@ -1,3 +1,20 @@
 <h1 class="text-center mb-5">
   Home
 </h1>
+
+<div id="target">
+
+</div>
+
+<script type="text/javascript">
+  let source = new EventSource('/live')
+
+  source.onopen = (event) => {
+    console.log('The connection has been opened', event)
+  }
+
+  source.onmessage = (event) => {
+    console.log('The message has been received', event)
+    document.getElementById('target').innerHTML = event.data
+  }
+</script>
